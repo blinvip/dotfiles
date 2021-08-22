@@ -35,3 +35,4 @@ zinit load mafredri/zsh-async
 zinit load sindresorhus/pure
 zinit load zsh-users/zsh-syntax-highlighting
 zinit load zsh-users/zsh-completions 
+zinit snippet OMZP::ssh-agent
