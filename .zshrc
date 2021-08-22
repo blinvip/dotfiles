@@ -31,9 +31,24 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+# zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+# zinit light sindresorhus/pure
 zinit load zsh-users/zsh-syntax-highlighting
 zinit load zsh-users/zsh-completions 
 zinit snippet OMZP::ssh-agent
 
+## Oh My Zsh Setting
+ZSH_THEME="cjt"
+
+## Zinit Setting
+# Must Load OMZ Git library
+zinit snippet OMZL::git.zsh
+
+# Load Git plugin from OMZ
+zinit snippet OMZP::git
+zinit cdclear -q # <- forget completions provided up to this moment
+
+setopt promptsubst
+
+# Load Prompt
+zinit light blinvip/cjt
