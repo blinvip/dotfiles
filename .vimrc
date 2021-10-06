@@ -118,7 +118,7 @@
   nmap 0 ^
 
   " noh - no highlight
-    map <esc> :noh <CR>
+    " map <esc> :noh <CR>
 
   "netrw confing
   let g:netrw_keepdir = 0
