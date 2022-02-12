@@ -129,11 +129,11 @@
 
   " vtr to tmux
   nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
-  nnoremap <leader>sl :VtrSendLinesToRunner<cr>
+  noremap <C-f> :VtrSendLinesToRunner<cr>
   noremap <leader>va :VtrAttachToPane<cr>
-  nnoremap <leader>sc :VtrSendCommandToRunner<cr>
-  nnoremap <leader>kc :VtrFlushCommand<cr>
-  nnoremap <leader>ksr :VtrKillRunner<cr>
+  nnoremap <leader>vs :VtrSendCommandToRunner<cr>
+  nnoremap <leader>fc :VtrFlushCommand<cr>
+  nnoremap <leader>vk :VtrKillRunner<cr>
   nnoremap <leader>fr :VtrFocusRunner<cr>
 
   " automatically rebalance windows on vim resize
