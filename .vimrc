@@ -214,5 +214,6 @@
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-obsession'
+  Plug 'christianrondeau/vim-base64'
   
   call plug#end()
