@@ -1,6 +1,24 @@
+export ZPLUG_HOME=$HOME/.zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug 'mafredri/zsh-async'
+zplug 'sindresorhus/pure'
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-completions', defer:2
+zplug 'zsh-users/zsh-autosuggestions', defer:2
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+
+zplug load
+
+zstyle :prompt:pure:git:stash show yes
+zstyle ':vcs_info:git*' formats '%b' '%R' '%a' '%i'
+zstyle ':vcs_info:git*' actionformats '%b' '%R' '%a' '%i'
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+source $HOME/.zsh/aliases
 
 for zsh_source in $HOME/.zsh/configs/*.zsh; do
   source $zsh_source
@@ -8,47 +26,3 @@ done
 
 ensure_tmux_is_running
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-
-# zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-# zinit light sindresorhus/pure
-zinit load zsh-users/zsh-syntax-highlighting
-zinit load zsh-users/zsh-completions 
-zinit snippet OMZP::ssh-agent
-
-## Oh My Zsh Setting
-ZSH_THEME="cjt"
-
-## Zinit Setting
-# Must Load OMZ Git library
-zinit snippet OMZL::git.zsh
-
-# Load Git plugin from OMZ
-zinit snippet OMZP::git
-zinit cdclear -q # <- forget completions provided up to this moment
-
-setopt promptsubst
-
-# Load Prompt
-zinit light blinvip/cjt
