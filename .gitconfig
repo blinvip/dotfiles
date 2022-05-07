@@ -1,0 +1,18 @@
+[user]
+	name = Bogdan Blinov
+	email = bblinov@bellintegrator.com
+[init]
+	defalutBranch = master
+[core]
+	excludesFile = ~/.gitignore
+	editor = vim
+[mergetool "gitmerge"]
+      cmd = /usr/local/bin/gitmerge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[merge]
+      tool = gitmerge
+[alias]
+	sla = log --oneline --decorate --graph --all
+	glog = log -E -i --grep
+	car = commit --amend --no-edit
+	unstage = reset
+	uncommit = reset --soft HEAD^
