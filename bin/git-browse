@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Small wrapper around git browse request to gitlab
+
+
+xdg-open "$(git remote get-url origin | sed -Ee 's#(ssh://git://|ssh://git@|git@|git://)#https://#' -e 's@com:@com/@' -e 's@ml:@ml/@' -e 's%\.git$%%')/-/tree/$(git config --get branch.`git branch --show-current`.merge | sed -e 's/^refs\/heads\///')"
