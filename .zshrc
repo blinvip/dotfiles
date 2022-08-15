@@ -11,14 +11,14 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 zplug load
 
 zstyle :prompt:pure:git:stash show yes
-zstyle ':vcs_info:git*' formats '%b' '%R' '%a' '%i'
-zstyle ':vcs_info:git*' actionformats '%b' '%R' '%a' '%i'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
 source $HOME/.zsh/aliases
+
+TERM=xterm-256color
 
 for zsh_source in $HOME/.zsh/configs/*.zsh; do
   source $zsh_source

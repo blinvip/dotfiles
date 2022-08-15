@@ -1,18 +1,39 @@
 [user]
 	name = Bogdan Blinov
-	email = bblinov@bellintegrator.com
+	email = blinvip@mail.ru
 [init]
 	defalutBranch = master
 [core]
 	excludesFile = ~/.gitignore
 	editor = vim
-[mergetool "gitmerge"]
-      cmd = /usr/local/bin/gitmerge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [merge]
-      tool = gitmerge
+	tool = vim-conflicted
+[mergetool "vim-conflicted"]
+	cmd = vim +Conflicted
+[mergetool "gitmerge"]
+  cmd = /usr/local/bin/gitmerge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [alias]
+  aa = add --all
+  b = branch
+  co = checkout
+  fall = "!for remote in $(git remote); do echo "Fetching $remote"; git fetch "$remote"; done"
+  full-commit = !git cat-file -p $(git rev-parse HEAD)
 	sla = log --oneline --decorate --graph --all
 	glog = log -E -i --grep
+  ca = commit --amend --verbose
 	car = commit --amend --no-edit
 	unstage = reset
 	uncommit = reset --soft HEAD^
+  dc = diff --word-diff --cached --color-words
+  df = diff --word-diff --color-words
+  mup = !git checkout master && git pull && git checkout -
+  upstream = rev-parse --abbrev-ref --symbolic-full-name @{u}
+  ureset = !git upstream && git reset --hard $(git upstream)
+	conflicted = !vim +Conflicted
+  pl = pull
+  ps = push
+  rbc = rebase --continue
+[push]
+  default = upstream
+[fetch]
+  prune = true

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Pushes current checkout branch to its remote counterpart.
+
+current_branch=$(git symbolic-ref --short HEAD)
+if [[ ${current_branch} ==  'master' ]]; then
+      echo "Currently on master, aborting."
+      exit 1
+else
+   git push -u origin "${current_branch}:${current_branch}"
+fi
+
